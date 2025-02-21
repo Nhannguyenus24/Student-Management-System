@@ -1,9 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🚀 Next.js Project - Installation & Setup Guide  
 
-## Getting Started
+## I. Clone the Project  
+First, download the source code by running:  
+```bash
+git clone <repository_url>
+cd <project_folder>
+```
 
-First, run the development server:
+## II. Install Dependencies
+Since the node_modules folder is not included in the repository, you need to reinstall dependencies:
+```bash
+npm install  # If using npm
+# or
+yarn         # If using yarn
+# or
+pnpm install # If using pnpm
+# or
+bun install  # If using bun
+```
 
+## III. Run the Development Server
+After installing dependencies, start the development server:
 ```bash
 npm run dev
 # or
@@ -13,28 +30,39 @@ pnpm dev
 # or
 bun dev
 ```
+Then open your browser and visit: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## IV. Deploy to Vercel
+To deploy the project on Vercel, run:
+```bash
+npx vercel
+```
+Or use the web interface: https://vercel.com/new
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## V. Important notes
+This project uses Next.js, so ensure Node.js >= 18. Check your Node.js version with:
+```bash
+node -v
+```
+If you encounter issues, try the following:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+# 🎓 Student Management System - Version 1 Features 
+## I. Display student information
+![display student](../screenshots/displayStudent.png)
+- This feature displays a list of students who have been added to the student management system. For better UI/UX, only key information is shown. To view full student details, click the "Detail" button above.
+## II. Search student information
+![search student](../screenshots/displayStudent.png)
+- This feature allows users to search for students by their identification number, name (including partial matches), faculty (Law, Business English, Japanese, French), course, and study status (Enrolled, Graduated, Withdrawn, Temporarily Suspended). The server will filter the information and return the results to the user. 
+- After entering the desired search criteria in the filter bar, click the "Search" button to apply the filter.
+## III. Add student information
+![add student](../screenshots/addStudent.png)
+- This feature allows users to add a new student to the database.
+- After entering all the required information, click "Save" to add the new student or "Cancel" to discard the action and return to the student list screen.
+## IV. Edit student information
+![edit student](../screenshots/editStudent.png)
+- This feature allows users to edit a new student to the database.
+- After entering all the required information, click "Save" to add the new student or "Cancel" to discard the action and return to the student list screen.
