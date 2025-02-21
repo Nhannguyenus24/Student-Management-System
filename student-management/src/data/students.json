@@ -1,16 +1,54 @@
 [
   {
-    "mssv": "11111",
+    "mssv": "3333",
+    "name": "test3",
+    "dob": "2004-11-12",
+    "gender": "male",
+    "faculty": "Khoa Tiếng Anh Thương Mại",
+    "year": "2023",
+    "program": "clc",
+    "address": "TP HCM",
+    "email": "test3@gmail.com",
+    "phone": "333333333",
+    "status": "Đang học"
+  },
+  {
+    "mssv": "4444",
+    "name": "test4",
+    "dob": "2005-12-11",
+    "gender": "female",
+    "faculty": "Khoa Tiếng Anh Thương Mại",
+    "year": "2024",
+    "program": "chuẩn ",
+    "address": "tp HN",
+    "email": "test4@gmail.com",
+    "phone": "444444444",
+    "status": "Đã tốt nghiệp"
+  },
+  {
+    "mssv": "1111",
     "name": "test1",
-    "dob": "czczczc",
-    "gender": "Nam",
-    "faculty": "",
+    "dob": "2004-11-12",
+    "gender": "male",
+    "faculty": "Khoa Luật",
+    "year": "2023",
+    "program": "clc",
+    "address": "TP HCM",
     "email": "test1@gmail.com",
     "phone": "111111111",
-    "status": "Đang học",
-    "course": "200",
-    "falcuty": "ăâê",
-    "program": "ăâê",
-    "address": "ăâê"
+    "status": "Đang học"
+  },
+  {
+    "mssv": "2222",
+    "name": "test2",
+    "dob": "2005-12-11",
+    "gender": "female",
+    "faculty": "Khoa Tiếng Anh Thương Mại",
+    "year": "2024",
+    "program": "chuẩn ",
+    "address": "tp HN",
+    "email": "test2@gmail.com",
+    "phone": "222222222",
+    "status": "Đã tốt nghiệp"
   }
 ]

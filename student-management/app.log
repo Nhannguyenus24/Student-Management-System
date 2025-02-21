@@ -1,0 +1,4 @@
+[2025-02-21T10:23:16.209Z] [INFO] File processed successfully - {"format":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","count":2}
+[2025-02-21T10:23:16.211Z] [ERROR] Server error - {"error":"Cannot access 'students' before initialization"}
+[2025-02-21T10:23:51.522Z] [INFO] File processed successfully - {"format":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","count":2}
+[2025-02-21T10:23:51.523Z] [ERROR] Server error - {"error":"Cannot access 'students' before initialization"}

@@ -1,0 +1,91 @@
+[2025-02-21T10:16:50.023Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:16:50.023Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:16:50.024Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:16:50.040Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:16:50.040Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:16:50.082Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:16:50.082Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:16:50.084Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:16:59.079Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:16:59.079Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:16:59.080Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:16:59.084Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:16:59.085Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:16:59.097Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:16:59.105Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:16:59.105Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:17:33.978Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:17:33.979Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:17:33.979Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:17:33.995Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:17:33.996Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:17:34.018Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:17:34.018Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:17:34.021Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:22:34.287Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:22:34.288Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:22:34.288Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:22:34.297Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:22:34.298Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:22:34.298Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:22:34.314Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:22:34.317Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:22:53.982Z] [INFO] API Accessed - {"method":"PUT","query":{"id":"1111"}}
+[2025-02-21T10:22:53.983Z] [INFO] Students data updated - {"total":2}
+[2025-02-21T10:22:53.984Z] [INFO] Student updated - {"id":"1111","updatedStudent":{"mssv":"3333","name":"test3","dob":"2004-11-12","gender":"male","faculty":"Khoa Tiếng Anh Thương Mại","year":"2023","program":"clc","address":"TP HCM","email":"test3@gmail.com","phone":"333333333","status":"Đang học"}}
+[2025-02-21T10:23:06.300Z] [INFO] API Accessed - {"method":"PUT","query":{"id":"2222"}}
+[2025-02-21T10:23:06.301Z] [INFO] Students data updated - {"total":2}
+[2025-02-21T10:23:06.301Z] [INFO] Student updated - {"id":"2222","updatedStudent":{"mssv":"4444","name":"test4","dob":"2005-12-11","gender":"female","faculty":"Khoa Tiếng Anh Thương Mại","year":"2024","program":"chuẩn ","address":"tp HN","email":"test4@gmail.com","phone":"444444444","status":"Đã tốt nghiệp"}}
+[2025-02-21T10:23:08.479Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:23:08.479Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:23:08.479Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:23:08.487Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:23:08.487Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:23:08.498Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:23:08.498Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:23:08.502Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:23:16.266Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:23:16.267Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:23:18.997Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:23:18.997Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:23:19.001Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:23:19.002Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:23:19.002Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:23:19.023Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:23:19.023Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:23:19.024Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:23:51.581Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:23:51.582Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:24:32.080Z] [INFO] File processed successfully - {"format":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","count":2}
+[2025-02-21T10:24:32.081Z] [ERROR] Server error - {"error":"Cannot access 'students' before initialization"}
+[2025-02-21T10:24:32.139Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:24:32.139Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:24:47.695Z] [INFO] File processed successfully - {"format":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","count":2}
+[2025-02-21T10:24:47.698Z] [ERROR] Server error - {"error":"Cannot access 'students' before initialization"}
+[2025-02-21T10:24:47.763Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:24:47.764Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:24:59.078Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:24:59.078Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:24:59.078Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:24:59.106Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:24:59.106Z] [INFO] Students retrieved - {"count":2}
+[2025-02-21T10:24:59.128Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:24:59.128Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:24:59.129Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:26:37.653Z] [INFO] File processed successfully - {"format":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","count":2}
+[2025-02-21T10:26:37.654Z] [INFO] Students data saved successfully - {"count":4}
+[2025-02-21T10:26:37.654Z] [INFO] Students added from file - {"count":2}
+[2025-02-21T10:26:37.710Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:26:37.711Z] [INFO] Students retrieved - {"count":4}
+[2025-02-21T10:26:39.438Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-21T10:26:39.438Z] [INFO] Students retrieved - {"count":4}
+[2025-02-21T10:26:39.461Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:26:39.462Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:26:39.462Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-21T10:26:39.479Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-21T10:26:39.480Z] [INFO] Fetched faculty list - {}
+[2025-02-21T10:26:39.480Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-21T10:34:47.397Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"1111","name":"test1","faculty":"Khoa Tiếng Nhật","year":"2023","status":"Đang học"}}
+[2025-02-21T10:34:47.397Z] [INFO] Students retrieved - {"count":0}
+[2025-02-21T10:34:51.686Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"1111","name":"test1","faculty":"","year":"2023","status":"Đang học"}}
+[2025-02-21T10:34:51.686Z] [INFO] Students retrieved - {"count":1}

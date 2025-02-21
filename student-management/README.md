@@ -52,17 +52,37 @@ npm install
 
 # 🎓 Student Management System - Version 1 Features 
 ## I. Display student information
-![display student](../screenshots/displayStudent.png)
+![displayStudent.png](../screenshots/displayStudent.png)
 - This feature displays a list of students who have been added to the student management system. For better UI/UX, only key information is shown. To view full student details, click the "Detail" button above.
 ## II. Search student information
-![search student](../screenshots/displayStudent.png)
+![displayStudent.png](../screenshots/displayStudent.png)
 - This feature allows users to search for students by their identification number, name (including partial matches), faculty (Law, Business English, Japanese, French), course, and study status (Enrolled, Graduated, Withdrawn, Temporarily Suspended). The server will filter the information and return the results to the user. 
 - After entering the desired search criteria in the filter bar, click the "Search" button to apply the filter.
 ## III. Add student information
-![add student](../screenshots/addStudent.png)
+![addStudent.png](../screenshots/addStudent.png)
 - This feature allows users to add a new student to the database.
 - After entering all the required information, click "Save" to add the new student or "Cancel" to discard the action and return to the student list screen.
 ## IV. Edit student information
-![edit student](../screenshots/editStudent.png)
+![editStudent.png](../screenshots/editStudent.png)
 - This feature allows users to edit a new student to the database.
 - After entering all the required information, click "Save" to add the new student or "Cancel" to discard the action and return to the student list screen.
+
+# 🎓 Student Management System - Version 2 Features 
+## I. Add or edit Faculty or Status
+![editFaculty.png](../screenshots/editFaculty.png)
+![addFaculty.png](../screenshots/addFaculty.png)
+- Users can now edit the list of faculties and statuses or add more options to choose from.
+## II. Search improve
+![searchImprove.png](../screenshots/searchImprove.png)
+- Users can now filter the student list by `name`, `student identification`, `faculty`, `year`, and `status`.
+## III. Import/ Export data
+![export.png](../screenshots/export.png)
+![import.png](../screenshots/import.png)
+- This Export feature allows users to export data in four file formats (JSON, Excel, XML, or CSV). Users can click the "Export File" button under the filter bars, select a file type, and the browser will automatically download the file.
+- This Import feature allows users to import data from four file formats (JSON, Excel, XML, or CSV). Users can click the "Import File" button under the filter bars, select a file to import.
+## IV. Add Log mechanism
+![LogFile.png](../screenshots/LogFile.png)
+- This feature allows developers to easily log and fix errors from API calls, storing them in the `app.log` file.
+## V. Show version and build date
+![version.png](../screenshots/version.png)
+- This feature allows users to view the version and build date of the web app.

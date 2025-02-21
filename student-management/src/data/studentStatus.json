@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Mọi tình trạng",
+    "value": ""
+  },
+  {
+    "label": "Đang học",
+    "value": "Đang học"
+  },
+  {
+    "label": "Đã tốt nghiệp",
+    "value": "Đã tốt nghiệp"
+  },
+  {
+    "label": "Đã thôi học",
+    "value": "Đã thôi học"
+  },
+  {
+    "label": "Bảo lưu",
+    "value": "Bảo lưu"
+  }
+]
