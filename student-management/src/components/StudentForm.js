@@ -199,7 +199,7 @@ const StudentForm = ({
             disabled={review}
           >
             {statuses.map((status) => (
-              <option key={status.value} value={status.value}>
+              <option key={status.value} value={status.value} disabled={data.status === "Đã tốt nghiệp" && status.value === "Đang học"}>
                 {status.label}
               </option>
             ))}

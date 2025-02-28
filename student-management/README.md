@@ -86,3 +86,10 @@ npm install
 ## V. Show version and build date
 ![version.png](../screenshots/version.png)
 - This feature allows users to view the version and build date of the web app.
+
+# 🎓 Student Management System - Version 3 Features
+## I. Add validate for email and phone number
+![validate.png](../screenshots/validate.png)
+- This feature will validate student emails and phone numbers. The email must follow the format @student...edu.vn, and the phone number must be valid in Vietnam. Additionally, the program will check if a student with the same ID already exists before adding a new one.
+## II. Disable option status student
+- Once a student has graduated, they cannot be reverted to undergraduate status. That option will be disabled.

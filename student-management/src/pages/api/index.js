@@ -10,7 +10,12 @@ export const config = {
     bodyParser: true, 
   },
 };
-
+const isStudentEmail = (email) => {
+  return /^[a-zA-Z0-9._%+-]+@student\.\w+\.edu\.vn$/.test(email);
+};
+const isValidVietnamPhone = (phone) => {
+  return /^(?:\+84|0)(3|5|7|8|9)\d{8}$/.test(phone);
+};
 const writeLog = (level, message, data = {}) => {
   const logMessage = `[${new Date().toISOString()}] [${level}] ${message} - ${JSON.stringify(data)}\n`;
   fs.appendFileSync(LOG_FILE, logMessage, "utf-8"); // Ghi vào file log
@@ -50,6 +55,14 @@ export default async function handler(req, res) {
   } else if (req.method === "POST") {
     try {
       const newStudent = req.body;
+      if (!isStudentEmail(newStudent.email)) {
+        writeLog("ERROR", "Invalid email", { email: newStudent.email });
+        return res.status(400).json({ message: "Invalid email" });
+      }
+      if (!isValidVietnamPhone(newStudent.phone)) {
+        writeLog("ERROR", "Invalid phone", { phone: newStudent.phone });
+        return res.status(400).json({ message: "Invalid phone" });
+      }
       const students = getStudents();
       const isDuplicate = students.some(
         (student) =>

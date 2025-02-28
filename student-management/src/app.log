@@ -89,3 +89,19 @@
 [2025-02-21T10:34:47.397Z] [INFO] Students retrieved - {"count":0}
 [2025-02-21T10:34:51.686Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"1111","name":"test1","faculty":"","year":"2023","status":"Đang học"}}
 [2025-02-21T10:34:51.686Z] [INFO] Students retrieved - {"count":1}
+[2025-02-28T14:34:35.427Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-28T14:34:35.429Z] [INFO] Students retrieved - {"count":4}
+[2025-02-28T14:34:35.471Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-28T14:34:35.472Z] [INFO] Fetched faculty list - {}
+[2025-02-28T14:34:35.472Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-28T14:34:35.493Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-28T14:34:35.501Z] [INFO] Fetched faculty list - {}
+[2025-02-28T14:34:35.502Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-28T14:35:54.580Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-28T14:35:54.586Z] [INFO] Fetched faculty list - {}
+[2025-02-28T14:35:54.592Z] [INFO] Faculty list retrieved - {"total":5}
+[2025-02-28T14:35:54.605Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-02-28T14:35:54.607Z] [INFO] Fetched faculty list - {}
+[2025-02-28T14:35:54.609Z] [INFO] Status list retrieved - {"total":5}
+[2025-02-28T14:35:54.659Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-02-28T14:35:54.660Z] [INFO] Students retrieved - {"count":4}
