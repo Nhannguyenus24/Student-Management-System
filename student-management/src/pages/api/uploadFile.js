@@ -5,6 +5,7 @@ import Papa from "papaparse";
 import * as XLSX from "xlsx";
 import { parseString } from "xml2js";
 import { promisify } from "util";
+import { writeLog, getStudents, saveStudents } from "./utils";
 
 export const config = {
     api: {
@@ -13,39 +14,12 @@ export const config = {
   };
 // Thiết lập đường dẫn file JSON
 const filePath = path.join(process.cwd(), "src", "data", "students.json");
-const LOG_FILE = path.join(process.cwd(), "src","app.log");
-
-const writeLog = (level, message, data = {}) => {
-  const logMessage = `[${new Date().toISOString()}] [${level}] ${message} - ${JSON.stringify(data)}\n`;
-  fs.appendFileSync(LOG_FILE, logMessage, "utf-8"); // Ghi vào file log
-};
 
 // Middleware xử lý file upload với Multer
 const upload = multer({ storage: multer.memoryStorage() });
 
 const runMiddleware = promisify(upload.single("file"));
-const getStudents = (mssv = "", name = "", faculty = "", year = "", status = "") => {
-  const jsonData = fs.readFileSync(filePath);
-  const students = JSON.parse(jsonData);
-  return students.filter((student) => {
-    return (
-      (!mssv || student.mssv.includes(mssv)) && // Kiểm tra mssv có chứa giá trị nhập vào không
-      (!name || student.name.toLowerCase().includes(name.toLowerCase())) && // Kiểm tra name (chuyển về lowercase)
-      (!faculty || student.faculty === faculty) && // So sánh faculty
-      (!year || student.year === year) && // So sánh course
-      (!status || student.status === status) // So sánh status
-    );
-  });
-};
-const saveStudents = (students) => {
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(students, null, 2));
-    writeLog("INFO", "Students data saved successfully", { count: students.length });
-  } catch (error) {
-    writeLog("ERROR", "Error saving students.json", { error: error.message });
-    console.error("Error saving students.json:", error);
-  }
-};
+
 const processFileData = async (file) => {
   const { mimetype, buffer } = file;
   let newStudents = [];

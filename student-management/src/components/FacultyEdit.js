@@ -1,6 +1,7 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
+import { useSnackbar } from "notistack";
 const FacultyEdit = ({ data, setData }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [openList, setOpenList] = useState(false); // Hiện danh sách khoa
   const [openForm, setOpenForm] = useState(false); // Hiện form nhập liệu
   const [selectedFaculty, setSelectedFaculty] = useState(null);
@@ -17,7 +18,24 @@ const FacultyEdit = ({ data, setData }) => {
     setFacultyName("");
     setOpenForm(true);
   };
-
+  const handleDelete = async () => {
+    if (!selectedFaculty) return;
+    const response = await fetch(`/api/faculty?query=${selectedFaculty?.value || ""}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ value: selectedFaculty.value }),
+    });
+    if (!response.ok){
+      const data = await response.json();
+      enqueueSnackbar(data.message, { variant: "error" });
+      return;
+    }
+    setData((prevData) =>
+      prevData.filter((faculty) => faculty.value !== selectedFaculty.value)
+    );
+    enqueueSnackbar("Xóa thành công", { variant: "success" });
+    setOpenForm(false);
+  };
   const handleSubmit = async () => {
     if (facultyName.trim() === "") return;
     await fetch(`/api/faculty?query=${selectedFaculty?.value || ""}`, {
@@ -118,6 +136,12 @@ const FacultyEdit = ({ data, setData }) => {
                 className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
               >
                 Hủy
+              </button>
+              <button
+                onClick={handleDelete}
+                className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+              >
+                Xóa
               </button>
             </div>
           </div>

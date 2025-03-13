@@ -1,36 +1,50 @@
 import React, { useState } from "react";
-
+import { useSnackbar } from "notistack";
 const StudentForm = ({
   formData,
   closeModal,
   faculties,
   years,
   statuses,
+  programs,
   editingStudent,
   setStudents,
   students,
   review,
 }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState(formData);
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editingStudent) {
-      await fetch(`/api/${editingStudent.mssv}`, {
+      const response = await fetch(`/api/${editingStudent.mssv}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (!response.ok) {
+        const data = await response.json();
+        enqueueSnackbar(data.message, { variant: "error" });
+        return;
+      }
+      enqueueSnackbar("Student updated", { variant: "success" });
       setStudents(
         students.map((s) => (s.mssv === editingStudent.mssv ? data : s))
       );
     } else {
-      await fetch("/api", {
+      const response = await fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (!response.ok) {
+        const data = await response.json();
+        enqueueSnackbar(data.message, { variant: "error" });
+        return;
+      }
+      enqueueSnackbar("Student added", { variant: "success" });
       setStudents([...students, data]);
     }
     closeModal();
@@ -134,18 +148,23 @@ const StudentForm = ({
             ))}
           </select>
         </label>
-
+        
         <label className="block">
           Chương trình
-          <input
+          <select
             name="program"
-            placeholder="Nhập chương trình"
             value={data.program}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
             required
             disabled={review}
-          />
+          >
+                        {programs.map((faculty) => (
+              <option key={faculty.value} value={faculty.value}>
+                {faculty.label}
+              </option>
+            ))}
+          </select>
         </label>
 
         <label className="block">
@@ -199,7 +218,13 @@ const StudentForm = ({
             disabled={review}
           >
             {statuses.map((status) => (
-              <option key={status.value} value={status.value} disabled={data.status === "Đã tốt nghiệp" && status.value === "Đang học"}>
+              <option
+                key={status.value}
+                value={status.value}
+                disabled={
+                  data.status === "Đã tốt nghiệp" && status.value === "Đang học"
+                }
+              >
                 {status.label}
               </option>
             ))}
@@ -222,13 +247,13 @@ const StudentForm = ({
           </div>
         )}
         {review && (
-            <div className="flex justify-between gap-4 mt-4">
-          <button
-            onClick={closeModal}
-            className="text-blue-500 border border-blue-500 flex-1 p-2 rounded-md hover:bg-red-100"
-          >
-            Trở về
-          </button>
+          <div className="flex justify-between gap-4 mt-4">
+            <button
+              onClick={closeModal}
+              className="text-blue-500 border border-blue-500 flex-1 p-2 rounded-md hover:bg-red-100"
+            >
+              Trở về
+            </button>
           </div>
         )}
       </form>

@@ -1,22 +1,26 @@
 [
   {
-    "label": "Mọi tình trạng",
+    "label": "All statuses",
     "value": ""
   },
   {
-    "label": "Đang học",
-    "value": "Đang học"
+    "label": "Studying",
+    "value": "Studying"
   },
   {
-    "label": "Đã tốt nghiệp",
-    "value": "Đã tốt nghiệp"
+    "label": "Graduated",
+    "value": "Graduated"
   },
   {
-    "label": "Đã thôi học",
-    "value": "Đã thôi học"
+    "label": "Dropped out",
+    "value": "Dropped out"
   },
   {
-    "label": "Bảo lưu",
-    "value": "Bảo lưu"
+    "label": "Deferred",
+    "value": "Deferred"
+  },
+  {
+    "label": "Suspended",
+    "value": "Suspended"
   }
 ]

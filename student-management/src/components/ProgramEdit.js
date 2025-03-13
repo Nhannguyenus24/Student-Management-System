@@ -1,65 +1,65 @@
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 
-const StatusEdit = ({ data, setData }) => {
+const ProgramEdit = ({ data, setData }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [openList, setOpenList] = useState(false);
   const [openForm, setOpenForm] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState(null);
-  const [statusName, setStatusName] = useState("");
+  const [selectedProgram, setSelectedProgram] = useState(null);
+  const [ProgramName, setProgramName] = useState("");
 
-  const handleEdit = (status) => {
-    setSelectedStatus(status);
-    setStatusName(status.value);
+  const handleEdit = (Program) => {
+    setSelectedProgram(Program);
+    setProgramName(Program.value);
     setOpenForm(true);
   };
 
   const handleAddNew = () => {
-    setSelectedStatus(null);
-    setStatusName("");
+    setSelectedProgram(null);
+    setProgramName("");
     setOpenForm(true);
   };
   const handleDelete = async () => {
-    if (!selectedStatus) return;
-    const response = await fetch(`/api/status?query=${selectedStatus?.value || ""}`, {
+    if (!selectedProgram) return;
+    const response = await fetch(`/api/program?query=${selectedProgram?.value || ""}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ value: selectedStatus.value }),
+      body: JSON.stringify({ value: selectedProgram.value }),
     });
     if (!response.ok){
       const data = await response.json();
       enqueueSnackbar(data.message, { variant: "error" });
       return;
     }
-    setData((prevData) =>
-      prevData.filter((status) => status.value !== selectedStatus.value)
-    );
     enqueueSnackbar("Xóa thành công", { variant: "success" });
+    setData((prevData) =>
+      prevData.filter((Program) => Program.value !== selectedProgram.value)
+    );
     setOpenForm(false);
   };
   const handleSubmit = async () => {
-    if (statusName.trim() === "") return;
-    await fetch(`/api/status?query=${selectedStatus?.value || ""}`, {
+    if (ProgramName.trim() === "") return;
+    await fetch(`/api/program?query=${selectedProgram?.value || ""}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ label: statusName, value: statusName }),
+      body: JSON.stringify({ label: ProgramName, value: ProgramName }),
     });
-    if (selectedStatus) {
-      console.log("Old Value:", selectedStatus.value);
-      console.log("New Value:", statusName);
+    if (selectedProgram) {
+      console.log("Old Value:", selectedProgram.value);
+      console.log("New Value:", ProgramName);
       setData((prevData) =>
-        prevData.map((status) =>
-          status.value === selectedStatus.value
-            ? { ...status, value: statusName, label: statusName }
-            : status
+        prevData.map((Program) =>
+          Program.value === selectedProgram.value
+            ? { ...Program, value: ProgramName, label: ProgramName }
+            : Program
         )
       );
     } else {
       console.log("Old Value:", "");
-      console.log("New Value:", statusName);
+      console.log("New Value:", ProgramName);
       setData((prevData) => [
         ...prevData,
-        { value: statusName, label: statusName },
+        { value: ProgramName, label: ProgramName },
       ]);
     }
     setOpenForm(false);
@@ -71,22 +71,22 @@ const StatusEdit = ({ data, setData }) => {
         className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
         onClick={() => setOpenList(!openList)}
       >
-        Thêm / Chỉnh sửa trạng thái
+        Thêm / Chỉnh sửa chương trình học
       </button>
 
       {openList && (
         <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg p-4 w-80 z-50">
           <h3 className="text-lg font-semibold mb-2">Danh sách trạng thái</h3>
           <ul className="space-y-2">
-            {data.filter((status) => status.value !== "").map((status, index) => (
+            {data.filter((Program) => Program.value !== "").map((Program, index) => (
               <li
                 key={index}
                 className="flex justify-between bg-gray-100 p-2 rounded-md"
               >
-                <span>{status.label}</span>
+                <span>{Program.label}</span>
                 <button
                   className="text-sm text-white bg-yellow-500 px-2 py-1 rounded-md hover:bg-yellow-600"
-                  onClick={() => handleEdit(status)}
+                  onClick={() => handleEdit(Program)}
                 >
                   Sửa
                 </button>
@@ -114,13 +114,13 @@ const StatusEdit = ({ data, setData }) => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999]">
           <div className="bg-white p-6 rounded-lg shadow-2xl w-96">
             <h2 className="text-xl font-semibold mb-4">
-              {selectedStatus ? "Chỉnh sửa" : "Thêm mới"}
+              {selectedProgram ? "Chỉnh sửa" : "Thêm mới"}
             </h2>
             <input
               type="text"
               className="w-full border border-gray-300 p-2 rounded-md"
-              value={statusName}
-              onChange={(e) => setStatusName(e.target.value)}
+              value={ProgramName}
+              onChange={(e) => setProgramName(e.target.value)}
             />
             <div className="mt-4 flex justify-end gap-2">
               <button
@@ -149,4 +149,4 @@ const StatusEdit = ({ data, setData }) => {
   );
 };
 
-export default StatusEdit;
+export default ProgramEdit;

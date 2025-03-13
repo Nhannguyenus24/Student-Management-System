@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FileUpload,
   FileExport,
@@ -6,13 +6,17 @@ import {
   FacultyEdit,
   StatusEdit,
 } from "../components";
-
-const years = Array.from({ length: 2025 - 1900 + 1 }, (_, i) => 2025 - i);
+import config from "../config";
+import { useSnackbar } from "notistack";
+import { exportToDOCX, exportToHTML, exportToMarkdown, exportToPDF } from "@/utils/exportFiles";
+const years = Array.from({ length: 2025 - 2000 + 1 }, (_, i) => 2025 - i);
 
 export default function Home() {
+  const { enqueueSnackbar } = useSnackbar();
   const [students, setStudents] = useState([]);
   const [statuses, setStatuses] = useState([]);
   const [faculties, setFaculties] = useState([]);
+  const [programs, setPrograms] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [review, setReview] = useState(null);
   const [editingStudent, setEditingStudent] = useState(null);
@@ -20,6 +24,7 @@ export default function Home() {
     version: "unknown",
     buildDate: "unknown",
   });
+  const [openForm, setOpenForm] = useState(null);
   const [filters, setFilters] = useState({
     mssv: "",
     name: "",
@@ -46,19 +51,25 @@ export default function Home() {
     fetch(`/api?${queryParams}`)
       .then((res) => res.json())
       .then((data) => setStudents(data))
-      .catch((error) => console.error("Error fetching students:", error));
+      .catch((error) => enqueueSnackbar("Error fetching students", { variant: "error" }));
   };
   const getFaculty = () => {
     fetch(`/api/faculty`)
       .then((res) => res.json())
       .then((data) => setFaculties(data))
-      .catch((error) => console.error("Error fetching students:", error));
+      .catch((error) => console.error("Error fetching faculty:", error));
   };
   const getStatus = () => {
     fetch(`/api/status`)
       .then((res) => res.json())
       .then((data) => setStatuses(data))
-      .catch((error) => console.error("Error fetching students:", error));
+      .catch((error) => console.error("Error fetching status:", error));
+  };
+  const getProgram = () => {
+    fetch(`/api/program`)
+      .then((res) => res.json())
+      .then((data) => setPrograms(data))
+      .catch((error) => console.error("Error fetching program:", error));
   };
   const getVersion = () => {
     fetch("/api/version")
@@ -71,6 +82,7 @@ export default function Home() {
     handleSearch();
     getFaculty();
     getStatus();
+    getProgram();
     getVersion();
   }, []);
 
@@ -82,8 +94,14 @@ export default function Home() {
   };
 
   const handleDelete = async (mssv) => {
-    await fetch(`/api/${mssv}`, { method: "DELETE" });
-    setStudents(students.filter((s) => s.mssv !== mssv));
+    const response = await fetch(`/api/${mssv}`, { method: "DELETE" });
+    if (response.ok) {
+      enqueueSnackbar("Xóa sinh viên thành công", { variant: "success" });
+      setStudents(students.filter((s) => s.mssv !== mssv));
+    } else {
+      const data = await response.json();
+      enqueueSnackbar(data.message, { variant: "error" });
+    }
   };
 
   const openModal = (student = null) => {
@@ -117,7 +135,9 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-blue-600 text-center">
           Quản lý Sinh Viên
         </h1>
-
+        <h1 className="text-3xl font-bold text-blue-600 text-center">
+          {config.schoolName}
+        </h1>
         {/* Thanh filter */}
         <div className="bg-white p-4 shadow-md flex items-center gap-4 mt-6 rounded-md">
           <input
@@ -240,9 +260,15 @@ export default function Home() {
                     </button>
                     <button
                       onClick={() => handleDelete(s.mssv)}
-                      className="bg-red-500 text-white px-3 py-1 rounded-md"
+                      className="bg-red-500 text-white px-3 py-1 rounded-md mx-2"
                     >
                       Xóa
+                    </button>
+                    <button
+                      onClick={() => setOpenForm(s)}
+                      className="bg-red-500 text-white px-3 py-1 rounded-md"
+                    >
+                      Xuất file
                     </button>
                   </td>
                 </tr>
@@ -255,6 +281,7 @@ export default function Home() {
             formData={formData}
             closeModal={closeModal}
             faculties={faculties}
+            programs={programs}
             years={years}
             statuses={statuses}
             editingStudent={editingStudent}
@@ -268,6 +295,30 @@ export default function Home() {
         <p>Version: {version.version}</p>
         <p>Build Date: {new Date(version.buildDate).toLocaleString()}</p>
       </div>
+      {openForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+        {/* Tiêu đề */}
+        <h2 className="text-center text-lg font-bold">{`TRƯỜNG ĐẠI HỌC ${config.schoolName}`}</h2>
+        <h3 className="text-center text-md font-semibold mt-2">Giấy xác nhận</h3>
+
+        {/* Tùy chọn xuất file */}
+        <div className="flex flex-col gap-2 mt-4">
+          <button className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" onClick={() => exportToPDF(openForm, `${openForm.name}.pdf`)}>Xuất PDF</button>
+          <button className="bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600" onClick={() => exportToMarkdown(openForm, `${openForm.name}.md`)}>Xuất MD</button>
+          <button className="bg-green-500 text-white py-2 rounded-md hover:bg-green-600" onClick={() => exportToHTML(openForm, `${openForm.name}.html`)}>Xuất HTML</button>
+          <button className="bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600" onClick={() => exportToDOCX(openForm,`${openForm.name}.docx`)}>Xuất DOCX</button>
+        </div>
+
+        {/* Nút hủy */}
+        <div className="mt-4 flex justify-center">
+          <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600" onClick={() => setOpenForm(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    </div>
+      )}
     </>
   );
 }

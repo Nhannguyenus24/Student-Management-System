@@ -1,0 +1,26 @@
+[
+    {
+        "label": "All",
+        "value": ""
+    },
+    {
+        "label": "Bachelor",
+        "value": "Bachelor"
+    },
+    {
+        "label": "Engineer",
+        "value": "Engineer"
+    },
+    {
+        "label": "Master",
+        "value": "Master"
+    },
+    {
+        "label": "Doctorate",
+        "value": "Doctorate"
+    },
+    {
+        "label": "Other",
+        "value": "Other"
+    }
+]

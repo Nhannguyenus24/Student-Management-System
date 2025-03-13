@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-
+import { isValidVietnamPhone, isStudentEmail, writeLog, getStudents, saveStudents } from "./utils.js";
 // Thiết lập đường dẫn file JSON
 const filePath = path.join(process.cwd(), "src", "data", "students.json");
 const LOG_FILE = path.join(process.cwd(),"src", "app.log");
@@ -9,40 +9,6 @@ export const config = {
   api: {
     bodyParser: true, 
   },
-};
-const isStudentEmail = (email) => {
-  return /^[a-zA-Z0-9._%+-]+@student\.\w+\.edu\.vn$/.test(email);
-};
-const isValidVietnamPhone = (phone) => {
-  return /^(?:\+84|0)(3|5|7|8|9)\d{8}$/.test(phone);
-};
-const writeLog = (level, message, data = {}) => {
-  const logMessage = `[${new Date().toISOString()}] [${level}] ${message} - ${JSON.stringify(data)}\n`;
-  fs.appendFileSync(LOG_FILE, logMessage, "utf-8"); // Ghi vào file log
-};
-
-const getStudents = (mssv = "", name = "", faculty = "", year = "", status = "") => {
-  const jsonData = fs.readFileSync(filePath);
-  const students = JSON.parse(jsonData);
-  return students.filter((student) => {
-    return (
-      (!mssv || student.mssv.includes(mssv)) && // Kiểm tra mssv có chứa giá trị nhập vào không
-      (!name || student.name.toLowerCase().includes(name.toLowerCase())) && // Kiểm tra name (chuyển về lowercase)
-      (!faculty || student.faculty === faculty) && // So sánh faculty
-      (!year || student.year === year) && // So sánh course
-      (!status || student.status === status) // So sánh status
-    );
-  });
-};
-
-const saveStudents = (students) => {
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(students, null, 2));
-    writeLog("INFO", "Students data updated", { total: students.length });
-  } catch (error) {
-    console.error("Error saving students.json:", error);
-    writeLog("ERROR", "Error saving students.json", { error: error.message });
-  }
 };
 
 export default async function handler(req, res) {
@@ -74,6 +40,7 @@ export default async function handler(req, res) {
         writeLog("ERROR", "Duplicate student detected", { student: newStudent });
         return res.status(400).json({ message: "Student already exists with the same email, phone, or mssv" });
       }
+      newStudent.createdAt = new Date().toISOString();
       students.push(newStudent);
       saveStudents(students);
       writeLog("INFO", "Student added", { student: newStudent });

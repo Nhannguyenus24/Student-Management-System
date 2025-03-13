@@ -1,22 +1,38 @@
 [
   {
-    "label": "Tất cả các khoa",
+    "label": "All Faculties",
     "value": ""
   },
   {
-    "label": "Khoa Luật",
-    "value": "Khoa Luật"
+    "label": "Faculty of Law",
+    "value": "Faculty of Law"
   },
   {
-    "label": "Khoa Tiếng Anh Thương Mại",
-    "value": "Khoa Tiếng Anh Thương Mại"
+    "label": "Faculty of Japanese Language",
+    "value": "Faculty of Japanese Language"
   },
   {
-    "label": "Khoa Tiếng Nhật",
-    "value": "Khoa Tiếng Nhật"
+    "label": "Faculty of French Language",
+    "value": "Faculty of French Language"
   },
   {
-    "label": "Khoa Tiếng Pháp",
-    "value": "Khoa Tiếng Pháp"
+    "label": "Faculty of Computer Science",
+    "value": "Faculty of Computer Science"
+  },
+  {
+    "label": "Faculty of Business Administration",
+    "value": "Faculty of Business Administration"
+  },
+  {
+    "label": "Faculty of Medicine",
+    "value": "Faculty of Medicine"
+  },
+  {
+    "label": "Faculty of Electrical Engineering",
+    "value": "Faculty of Electrical Engineering"
+  },
+  {
+    "label": "Faculty of Environmental Science",
+    "value": "Faculty of Environmental Science"
   }
 ]
