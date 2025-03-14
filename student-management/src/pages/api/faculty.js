@@ -22,6 +22,12 @@ export default async function handler(req, res) {
     let faculties = readFromFile(filePath, "Fetched faculty list", "Failed to fetch faculty list");
     if (query) {
       const index = faculties.findIndex((s) => s.value === query);
+      const students = getStudents();
+      const isFacultyInUse = students.some((student) => student.faculty === query);
+      if (isFacultyInUse) {
+        writeLog("ERROR", "Delete faculty in use", { query });
+        return res.status(400).json({ message: "Faculty in use, can not edit" });
+      }
       if (index !== -1) {
         faculties[index] = { label, value };
         writeLog("INFO", "Faculty updated", { index, label, value });

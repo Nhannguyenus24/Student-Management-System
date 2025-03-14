@@ -8,7 +8,12 @@ import {
 } from "../components";
 import config from "../config";
 import { useSnackbar } from "notistack";
-import { exportToDOCX, exportToHTML, exportToMarkdown, exportToPDF } from "@/utils/exportFiles";
+import {
+  exportToDOCX,
+  exportToHTML,
+  exportToMarkdown,
+  exportToPDF,
+} from "@/utils/exportFiles";
 const years = Array.from({ length: 2025 - 2000 + 1 }, (_, i) => 2025 - i);
 
 export default function Home() {
@@ -51,7 +56,9 @@ export default function Home() {
     fetch(`/api?${queryParams}`)
       .then((res) => res.json())
       .then((data) => setStudents(data))
-      .catch((error) => enqueueSnackbar("Error fetching students", { variant: "error" }));
+      .catch((error) =>
+        enqueueSnackbar("Error fetching students", { variant: "error" })
+      );
   };
   const getFaculty = () => {
     fetch(`/api/faculty`)
@@ -133,7 +140,7 @@ export default function Home() {
     <>
       <div className="min-h-screen bg-gray-100 p-6">
         <h1 className="text-3xl font-bold text-blue-600 text-center">
-          Quản lý Sinh Viên
+          Student Management System
         </h1>
         <h1 className="text-3xl font-bold text-blue-600 text-center">
           {config.schoolName}
@@ -142,14 +149,14 @@ export default function Home() {
         <div className="bg-white p-4 shadow-md flex items-center gap-4 mt-6 rounded-md">
           <input
             name="mssv"
-            placeholder="Mã số sinh viên"
+            placeholder="Student ID"
             className="border p-2 rounded-md w-1/6"
             value={filters.mssv}
             onChange={handleInputChange}
           />
           <input
             name="name"
-            placeholder="Họ tên"
+            placeholder="Full name"
             className="border p-2 rounded-md w-1/6"
             value={filters.name}
             onChange={handleInputChange}
@@ -172,7 +179,7 @@ export default function Home() {
             value={filters.year}
             onChange={handleInputChange}
           >
-            <option value="">Tất cả các khóa</option>
+            <option value="">All course</option>
             {years.map((year) => (
               <option key={year} value={year}>
                 {year}
@@ -197,7 +204,7 @@ export default function Home() {
             onClick={handleSearch}
             className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
           >
-            Tìm kiếm
+            Search
           </button>
         </div>
         <div className=" flex items-center gap-4 mt-6 rounded-md">
@@ -205,7 +212,7 @@ export default function Home() {
             onClick={() => openModal()}
             className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
           >
-            Thêm sinh viên
+            Add student
           </button>
           <FileUpload rerender={handleSearch} />
           <FileExport data={students} />
@@ -219,13 +226,13 @@ export default function Home() {
             <thead className="bg-blue-500 text-white">
               <tr>
                 {[
-                  "MSSV",
-                  "Họ tên",
-                  "Khoa",
-                  "Khóa",
-                  "Chương trình",
-                  "Tình trạng",
-                  "Hành động",
+                  "Student ID",
+                  "Full Name",
+                  "Faculty",
+                  "Course ",
+                  "Program",
+                  "Status",
+                  "Actions",
                 ].map((h) => (
                   <th key={h} className="p-2">
                     {h}
@@ -250,25 +257,25 @@ export default function Home() {
                       }}
                       className="bg-blue-500 text-white px-3 py-1 rounded-md"
                     >
-                      Chi tiết
+                      Detail
                     </button>
                     <button
                       onClick={() => openModal(s)}
                       className="bg-yellow-500 text-white px-3 py-1 rounded-md mx-2"
                     >
-                      Sửa
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDelete(s.mssv)}
                       className="bg-red-500 text-white px-3 py-1 rounded-md mx-2"
                     >
-                      Xóa
+                      Delete
                     </button>
                     <button
                       onClick={() => setOpenForm(s)}
                       className="bg-red-500 text-white px-3 py-1 rounded-md"
                     >
-                      Xuất file
+                      Export
                     </button>
                   </td>
                 </tr>
@@ -297,27 +304,54 @@ export default function Home() {
       </div>
       {openForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        {/* Tiêu đề */}
-        <h2 className="text-center text-lg font-bold">{`TRƯỜNG ĐẠI HỌC ${config.schoolName}`}</h2>
-        <h3 className="text-center text-md font-semibold mt-2">Giấy xác nhận</h3>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            {/* Tiêu đề */}
+            <h2 className="text-center text-lg font-bold">{`TRƯỜNG ĐẠI HỌC ${config.schoolName}`}</h2>
+            <h3 className="text-center text-md font-semibold mt-2">
+              Confirmation
+            </h3>
 
-        {/* Tùy chọn xuất file */}
-        <div className="flex flex-col gap-2 mt-4">
-          <button className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" onClick={() => exportToPDF(openForm, `${openForm.name}.pdf`)}>Xuất PDF</button>
-          <button className="bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600" onClick={() => exportToMarkdown(openForm, `${openForm.name}.md`)}>Xuất MD</button>
-          <button className="bg-green-500 text-white py-2 rounded-md hover:bg-green-600" onClick={() => exportToHTML(openForm, `${openForm.name}.html`)}>Xuất HTML</button>
-          <button className="bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600" onClick={() => exportToDOCX(openForm,`${openForm.name}.docx`)}>Xuất DOCX</button>
-        </div>
+            {/* Tùy chọn xuất file */}
+            <div className="flex flex-col gap-2 mt-4">
+              <button
+                className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+                onClick={() => exportToPDF(openForm, `${openForm.name}.pdf`)}
+              >
+                Export PDF
+              </button>
+              <button
+                className="bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600"
+                onClick={() =>
+                  exportToMarkdown(openForm, `${openForm.name}.md`)
+                }
+              >
+                Export MD
+              </button>
+              <button
+                className="bg-green-500 text-white py-2 rounded-md hover:bg-green-600"
+                onClick={() => exportToHTML(openForm, `${openForm.name}.html`)}
+              >
+                Export HTML
+              </button>
+              <button
+                className="bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600"
+                onClick={() => exportToDOCX(openForm, `${openForm.name}.docx`)}
+              >
+                Export DOCX
+              </button>
+            </div>
 
-        {/* Nút hủy */}
-        <div className="mt-4 flex justify-center">
-          <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600" onClick={() => setOpenForm(null)}>
-            Hủy
-          </button>
+            {/* Nút hủy */}
+            <div className="mt-4 flex justify-center">
+              <button
+                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+                onClick={() => setOpenForm(null)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
       )}
     </>
   );

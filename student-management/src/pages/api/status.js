@@ -17,7 +17,13 @@ export default async function handler(req, res) {
   } else if (req.method === "POST") {
     const { label, value } = req.body;
     const { query } = req.query;
-    let statuses = readFromFile(filePath, "Fetched student status list", "Failed to fetch student status list");Status();
+    let statuses = readFromFile(filePath, "Fetched student status list", "Failed to fetch student status list");
+    const students = getStudents();
+    const isStatusInUse = students.some((student) => student.faculty === value);
+    if (isStatusInUse) {
+      writeLog("ERROR", "Edit status in use", { value });
+      return res.status(400).json({ message: "Status in use" });
+    }
     writeLog("INFO", "Processing status update", { query, label, value });
     if (query) {
       const index = statuses.findIndex((s) => s.value === query);
@@ -34,7 +40,8 @@ export default async function handler(req, res) {
   } else if (req.method === "DELETE") {
     const { value } = req.body;
     let statuses = readFromFile(filePath, "Fetched student status list", "Failed to fetch student status list");
-    const isStatusInUse = Object.values(config.studentStatusConfig).some((statusList) => statusList.includes(value));
+    const students = getStudents();
+    const isStatusInUse = students.some((student) => student.faculty === value);
     if (isStatusInUse) {
       writeLog("ERROR", "Delete status in use", { value });
       return res.status(400).json({ message: "Status in use" });

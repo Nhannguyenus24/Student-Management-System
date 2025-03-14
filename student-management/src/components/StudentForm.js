@@ -50,19 +50,19 @@ const StudentForm = ({
     closeModal();
   };
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center max-h-[100vh] overflow-auto">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md w-1/3"
+        className="bg-white p-6 rounded-lg shadow-md w-1/3 "
       >
         <h2 className="text-2xl font-bold  text-center">
-          {editingStudent ? "Sửa Sinh Viên" : "Thêm Sinh Viên"}
+          {editingStudent ? "Edit student" : "Add student"}
         </h2>
         <label className="block">
-          Mã số sinh viên
+          Student ID
           <input
             name="mssv"
-            placeholder="Nhập mã số sinh viên"
+            placeholder="Enter student ID"
             value={data.mssv}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
@@ -72,10 +72,10 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Họ và tên
+          Full name
           <input
             name="name"
-            placeholder="Nhập họ và tên"
+            placeholder="Enter full name"
             value={data.name}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
@@ -85,7 +85,7 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Ngày sinh
+          Date of birth
           <input
             type="date"
             name="dob"
@@ -97,7 +97,7 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Giới tính
+          Gender
           <select
             name="gender"
             value={data.gender}
@@ -113,7 +113,7 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Khoa
+          Faculty
           <select
             name="faculty"
             value={data.faculty}
@@ -131,7 +131,7 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Khóa học
+          Course
           <select
             name="year"
             value={data.year}
@@ -140,7 +140,7 @@ const StudentForm = ({
             required
             disabled={review}
           >
-            <option value="">Chọn khóa học</option>
+            <option value="">Choose course</option>
             {years.map((year) => (
               <option key={year} value={year}>
                 {year}
@@ -148,9 +148,9 @@ const StudentForm = ({
             ))}
           </select>
         </label>
-        
+
         <label className="block">
-          Chương trình
+          Program
           <select
             name="program"
             value={data.program}
@@ -159,7 +159,7 @@ const StudentForm = ({
             required
             disabled={review}
           >
-                        {programs.map((faculty) => (
+            {programs.map((faculty) => (
               <option key={faculty.value} value={faculty.value}>
                 {faculty.label}
               </option>
@@ -168,10 +168,10 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Địa chỉ
+          Address
           <input
             name="address"
-            placeholder="Nhập địa chỉ"
+            placeholder="Enter address"
             value={data.address}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
@@ -184,7 +184,7 @@ const StudentForm = ({
           <input
             type="email"
             name="email"
-            placeholder="Nhập email"
+            placeholder="Enter email"
             value={data.email}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
@@ -194,11 +194,11 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Số điện thoại
+          Phone number
           <input
             type="tel"
             name="phone"
-            placeholder="Nhập số điện thoại"
+            placeholder="Enter phone number"
             value={data.phone}
             onChange={handleChange}
             className="border p-2 w-full mt-1"
@@ -208,7 +208,7 @@ const StudentForm = ({
         </label>
 
         <label className="block">
-          Tình trạng học
+          Status
           <select
             name="status"
             value={data.status}
@@ -218,13 +218,7 @@ const StudentForm = ({
             disabled={review}
           >
             {statuses.map((status) => (
-              <option
-                key={status.value}
-                value={status.value}
-                disabled={
-                  data.status === "Đã tốt nghiệp" && status.value === "Đang học"
-                }
-              >
+              <option key={status.value} value={status.value}>
                 {status.label}
               </option>
             ))}
@@ -236,13 +230,13 @@ const StudentForm = ({
               type="submit"
               className="bg-blue-500 text-white flex-1 p-2 rounded-md hover:bg-blue-600"
             >
-              Lưu
+              Save
             </button>
             <button
               onClick={closeModal}
               className="text-blue-500 border border-blue-500 flex-1 p-2 rounded-md hover:bg-red-100"
             >
-              Hủy
+              Cancel
             </button>
           </div>
         )}
@@ -252,7 +246,7 @@ const StudentForm = ({
               onClick={closeModal}
               className="text-blue-500 border border-blue-500 flex-1 p-2 rounded-md hover:bg-red-100"
             >
-              Trở về
+              Close
             </button>
           </div>
         )}

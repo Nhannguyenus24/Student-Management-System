@@ -18,6 +18,12 @@ export default async function handler(req, res) {
   } else if (req.method === "POST") {
     const { label, value } = req.body;
     const { query } = req.query;
+    const students = getStudents();
+    const isprogramInUse = students.some((student) => student.program === query);
+    if (isprogramInUse) {
+      writeLog("ERROR", "Edit program in use", { value });
+      return res.status(400).json({ message: "program in use" });
+    }
     let programs = readFromFile(filePath, "Fetched program list", "Failed to fetch program list");
     if (query) {
       const index = programs.findIndex((s) => s.value === query);

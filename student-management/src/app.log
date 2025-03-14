@@ -572,3 +572,89 @@
 [2025-03-13T19:54:00.439Z] [INFO] Program list retrieved - {"total":6}
 [2025-03-13T19:54:00.453Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
 [2025-03-13T19:54:00.455Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T05:21:01.842Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:21:01.846Z] [INFO] Fetched faculty list - {}
+[2025-03-14T05:21:01.847Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T05:21:01.852Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T05:21:01.853Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T05:21:01.855Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:21:01.856Z] [INFO] Fetched program list - {}
+[2025-03-14T05:21:01.856Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T05:21:01.859Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:21:01.860Z] [INFO] Fetched student status list - {}
+[2025-03-14T05:21:08.339Z] [INFO] API Accessed - {"method":"DELETE","query":{"id":"2201001"}}
+[2025-03-14T05:21:08.341Z] [ERROR] Deletion not allowed within time limit - {"id":"2201001"}
+[2025-03-14T05:23:07.676Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T05:23:07.676Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T05:23:07.686Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:23:07.686Z] [INFO] Fetched faculty list - {}
+[2025-03-14T05:23:07.686Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T05:23:07.696Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:23:07.697Z] [INFO] Fetched program list - {}
+[2025-03-14T05:23:07.697Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T05:23:07.706Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T05:23:07.708Z] [INFO] Fetched student status list - {}
+[2025-03-14T05:26:50.119Z] [INFO] API Accessed - {"method":"DELETE","query":{"query":"Faculty of Law"}}
+[2025-03-14T05:26:50.120Z] [ERROR] Delete faculty in use - {"value":"Faculty of Law"}
+[2025-03-14T05:32:10.424Z] [INFO] API Accessed - {"method":"DELETE","query":{"query":"Faculty of Law"}}
+[2025-03-14T05:32:10.425Z] [ERROR] Delete faculty in use - {"value":"Faculty of Law"}
+[2025-03-14T06:43:58.578Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:43:58.579Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:43:58.581Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:43:58.584Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:43:58.585Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:43:58.587Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:43:58.588Z] [INFO] Fetched program list - {}
+[2025-03-14T06:43:58.588Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T06:43:58.595Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:43:58.595Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T06:46:05.562Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:46:05.563Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:46:05.563Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:46:05.565Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:46:05.565Z] [INFO] Fetched program list - {}
+[2025-03-14T06:46:05.565Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T06:46:05.569Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:46:05.569Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:46:05.572Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:46:05.574Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T06:47:16.209Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:47:16.210Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T06:47:16.212Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:47:16.212Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:47:16.213Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:47:16.216Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:47:16.217Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:47:16.222Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:47:16.223Z] [INFO] Fetched program list - {}
+[2025-03-14T06:47:16.223Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T06:48:11.021Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:48:11.022Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T06:48:11.030Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:11.031Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:48:11.031Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:48:11.035Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:11.036Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:48:11.040Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:11.041Z] [INFO] Fetched program list - {}
+[2025-03-14T06:48:11.041Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T06:48:36.703Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:48:36.704Z] [INFO] Students retrieved - {"count":5}
+[2025-03-14T06:48:36.711Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:36.712Z] [INFO] Fetched program list - {}
+[2025-03-14T06:48:36.712Z] [INFO] Program list retrieved - {"total":6}
+[2025-03-14T06:48:36.715Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:36.716Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:48:36.729Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:48:36.730Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:48:36.730Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:50:09.571Z] [INFO] API Accessed - {"method":"GET","query":{"mssv":"","name":"","faculty":"","year":"","status":""}}
+[2025-03-14T06:50:09.572Z] [INFO] Students retrieved - {"count":14}
+[2025-03-14T06:50:09.582Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:50:09.582Z] [INFO] Fetched student status list - {}
+[2025-03-14T06:50:09.588Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:50:09.588Z] [INFO] Fetched faculty list - {}
+[2025-03-14T06:50:09.589Z] [INFO] Faculty list retrieved - {"total":9}
+[2025-03-14T06:50:09.594Z] [INFO] API Accessed - {"method":"GET","query":{}}
+[2025-03-14T06:50:09.595Z] [INFO] Fetched program list - {}
+[2025-03-14T06:50:09.595Z] [INFO] Program list retrieved - {"total":6}

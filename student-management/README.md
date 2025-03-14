@@ -3,8 +3,8 @@
 ## I. Clone the Project  
 First, download the source code by running:  
 ```bash
-git clone <repository_url>
-cd <project_folder>
+git clone https://github.com/Nhannguyenus24/Student-Management-System.git
+cd student-management
 ```
 
 ## II. Install Dependencies
@@ -89,7 +89,52 @@ npm install
 
 # 🎓 Student Management System - Version 3 Features
 ## I. Add validate for email and phone number
-![validate.png](../screenshots/validate.png)
+![config.js](../screenshots/config.png)
 - This feature will validate student emails and phone numbers. The email must follow the format @student...edu.vn, and the phone number must be valid in Vietnam. Additionally, the program will check if a student with the same ID already exists before adding a new one.
 ## II. Disable option status student
 - Once a student has graduated, they cannot be reverted to undergraduate status. That option will be disabled.
+## III. Configuration
+- Each checking valid phone, email or change status can be config in `config.js`.
+
+# 🎓 Student Management System - Version 4 Features
+## I. Students can only be deleted if their creation date/time falls within a specified (configurable) time range
+![config.js](../screenshots/config.png)
+- This feature allow to deleted student within 30 minutes, config in code (creationDeleteLimit). It can be change in `config.js`. 
+![Can not delete](../screenshots/messageExplainCancelDelete.png)
+
+## II. Show logo or school name
+![School name](../screenshots/mainScreen.png)
+- This feature allows the main screen to display the school name, which can be configured in `config.js`.
+
+## III. Student status, program, and faculty can be deleted if there are no data constraints
+![Can not delete when student in use](../screenshots/facultyInUse.png)
+- This feature checks if a faculty, program, or status is in use. If they are, they cannot be edited or deleted; otherwise, they can.
+
+## IV. Export student status confirmation to HTML/MD/PDF/DOCX 
+![Export option](../screenshots/exportOption.png)
+- When clicking "Export file" in the student information row, there will be four options to choose from for exporting the student status confirmation.
+
+![Export PDF](../screenshots/pdfFormat.png)
+- PDF format
+
+![Export DOCX](../screenshots/wordFormat.png)
+- DOCX format
+
+![Export MD](../screenshots/mdFormat.png)
+- MD format
+
+![Export HTML](../screenshots/htmlFormat.png)
+- HTML format
+
+## V. Good Techniques in Use and Improvements
+01. Don't Repeat Yourself (DRY)
+- Functions that are used repeatedly, such as logging functions, email and phone number validation, and functions for reading and writing JSON files, are declared in `utils.js` for reusability. This makes the code more concise and easier to maintain.
+
+02. Backend Data Validation and Business Logic Enforcement
+- Centralizing business logic and validation in the backend helps prevent inconsistencies and ensures data integrity across the system. By enforcing validation at the backend level, unnecessary API calls are minimized, improving performance and reducing server load. Additionally, backend validation prevents incorrect or inconsistent data from being processed or stored, reducing the risk of data logic errors and maintaining accuracy. It also enhances security by preventing potential exploits, such as bypassing client-side validation or sending manipulated requests. A well-structured backend with centralized validation improves maintainability, making the codebase easier to debug, extend, and manage without introducing unexpected errors.
+
+03. UI consistency 
+- The UI is designed to be as simple as possible while remaining user-friendly and displaying all necessary information.
+
+04. Performance Optimization
+- Utilize caching techniques to store and update data directly instead of waiting for API fetch requests to retrieve the latest data.

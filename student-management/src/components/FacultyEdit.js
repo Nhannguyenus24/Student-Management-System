@@ -20,12 +20,15 @@ const FacultyEdit = ({ data, setData }) => {
   };
   const handleDelete = async () => {
     if (!selectedFaculty) return;
-    const response = await fetch(`/api/faculty?query=${selectedFaculty?.value || ""}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ value: selectedFaculty.value }),
-    });
-    if (!response.ok){
+    const response = await fetch(
+      `/api/faculty?query=${selectedFaculty?.value || ""}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ value: selectedFaculty.value }),
+      }
+    );
+    if (!response.ok) {
       const data = await response.json();
       enqueueSnackbar(data.message, { variant: "error" });
       return;
@@ -44,8 +47,6 @@ const FacultyEdit = ({ data, setData }) => {
       body: JSON.stringify({ label: facultyName, value: facultyName }),
     });
     if (selectedFaculty) {
-      console.log("Old Value:", selectedFaculty.value);
-      console.log("New Value:", facultyName);
       setData((prevData) =>
         prevData.map((faculty) =>
           faculty.value === selectedFaculty.value
@@ -54,8 +55,6 @@ const FacultyEdit = ({ data, setData }) => {
         )
       );
     } else {
-      console.log("Old Value:", "");
-      console.log("New Value:", facultyName);
       setData((prevData) => [
         ...prevData,
         { value: facultyName, label: facultyName },
@@ -71,41 +70,43 @@ const FacultyEdit = ({ data, setData }) => {
         className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
         onClick={() => setOpenList(!openList)}
       >
-        Thêm / Chỉnh sửa khoa
+        Add / Edit Faculty
       </button>
 
       {/* Hiển thị danh sách khoa khi bấm vào nút trên */}
       {openList && (
         <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg p-4 w-80 z-50">
-          <h3 className="text-lg font-semibold mb-2">Danh sách khoa</h3>
+          <h3 className="text-lg font-semibold mb-2">Faculty list</h3>
           <ul className="space-y-2">
-            {data.filter((faculty) => faculty.value !== "").map((faculty, index) => (
-              <li
-                key={index}
-                className="flex justify-between bg-gray-100 p-2 rounded-md"
-              >
-                <span>{faculty.label}</span>
-                <button
-                  className="text-sm text-white bg-yellow-500 px-2 py-1 rounded-md hover:bg-yellow-600"
-                  onClick={() => handleEdit(faculty)}
+            {data
+              .filter((faculty) => faculty.value !== "")
+              .map((faculty, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between bg-gray-100 p-2 rounded-md"
                 >
-                  Sửa
-                </button>
-              </li>
-            ))}
+                  <span>{faculty.label}</span>
+                  <button
+                    className="text-sm text-white bg-yellow-500 px-2 py-1 rounded-md hover:bg-yellow-600"
+                    onClick={() => handleEdit(faculty)}
+                  >
+                    Edit
+                  </button>
+                </li>
+              ))}
           </ul>
           <div className="mt-4 flex justify-between gap-2">
             <button
               onClick={handleAddNew}
               className="flex-1 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
             >
-              Thêm
+              Add
             </button>
             <button
               onClick={() => setOpenList(false)}
               className="flex-1 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition"
             >
-              Trở về
+              Close
             </button>
           </div>
         </div>
@@ -129,19 +130,19 @@ const FacultyEdit = ({ data, setData }) => {
                 onClick={handleSubmit}
                 className="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-600 transition"
               >
-                Lưu
+                Save
               </button>
               <button
                 onClick={() => setOpenForm(false)}
                 className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
               >
-                Hủy
+                Cancel
               </button>
               <button
                 onClick={handleDelete}
                 className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition"
               >
-                Xóa
+                Delete
               </button>
             </div>
           </div>
